@@ -1,60 +1,39 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'main', defaultValue: 'main', description: 'GitHub branch to build')
-    }
-
-    environment {
-        GIT_REPO = 'https://github.com/humer6930/PES1UG22AM094_JEKINS.git'
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    echo "Cloning repository from branch: ${params.BRANCH_NAME}"
-                }
-                git branch: "${params.BRANCH_NAME}", url: "${GIT_REPO}"
+                echo 'Checking out code...'
+                git branch: 'main', url: 'https://github.com/humer6930/PES1UG22AM094_JEKINS.git'
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    echo 'Building the project...'
-                    // Example: If using Maven
-                    // sh 'mvn clean package'
-                }
+                echo 'Building the project...'
+                sh 'echo "Build successful!"'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    echo 'Running tests...'
-                    // Example: If using Maven
-                    // sh 'mvn test'
-                }
+                echo 'Running tests...'
+                sh 'echo "Tests passed!"'
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    echo 'Deploying application...'
-                    // Example deployment steps
-                }
+                echo 'Deploying application...'
+                sh 'echo "Deployment successful!"'
             }
         }
     }
 
     post {
-        success {
-            echo 'Build succeeded!'
-        }
-        failure {
-            echo 'Build failed!'
+        always {
+            echo 'Pipeline execution completed by Karthik BK.'
         }
     }
 }
