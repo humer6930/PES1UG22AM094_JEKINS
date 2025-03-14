@@ -33,7 +33,7 @@ pipeline {
 
     post {
         always {
-            echo 'Pipeline execution completed by Karthik BK.'
+            echo 'Pipeline execution completed by MD HUMER ALLI.'
         }
     }
 }
